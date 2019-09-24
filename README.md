@@ -1,5 +1,5 @@
 # SimpleBlackjack
-An andrioid/java blackjack program 
+An android / java blackjack program
 
 # Estimation
   Chiara: 150 LOC & 24-36 hrs
