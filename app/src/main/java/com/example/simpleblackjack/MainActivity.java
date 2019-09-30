@@ -6,6 +6,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button = null;
@@ -25,21 +28,94 @@ public class MainActivity extends AppCompatActivity {
                 //Deck initialized and shuffled
                 String[] deckOfCards = deck();
 
+
+
                 //Dealer given two cards
+                List<String> dealer = new ArrayList<String>();
+                dealer.add(deckOfCards[0]);
+                dealer.add(deckOfCards[1]);
+
 
 
                 //Player given two cards
+                List<String> player = new ArrayList<String>();
+                player.add(deckOfCards[2]);
+                player.add(deckOfCards[3]);
+
+
 
                 //Check for 21 on both (method)
+                boolean dealerWin = false;
+                boolean playerWin = false;
 
+                //dealer
+                if (blackjackCheck(deckOfCards[0],deckOfCards[1])){
+
+                    //Dealer black jack
+                    dealerWin = true;
+
+                }
+
+                //player
+                if (blackjackCheck(deckOfCards[2], deckOfCards[3])){
+
+                    //player black jack
+                    playerWin = true;
+
+                }
+
+                //Checks who won blackjack and tie scenario
+                if (dealerWin || playerWin){
+
+                    if(dealerWin && playerWin){
+                        //Output tie message and offer to replay game
+                        System.out.println("It's A Tie!");
+                    }
+                    else if(dealerWin){
+                        //Output dealer wins
+                        System.out.println("Dealer Wins");
+                    }
+                    else
+                    {
+                        //Player victory
+                        System.out.println("Player Wins!");
+                    }
+
+
+                } //End of blackjack check
+
+
+                // Prototype two card draw game
+                //Check who has higher value cards
+                int dealerC1, dealerC2, dealerTotal;
+                int playerC1, playerC2, playerTotal;
+
+
+                //Dealer values
+                dealerC1 = cardValue(deckOfCards[0]);
+                dealerC2 = cardValue(deckOfCards[1]);
+                dealerTotal = dealerC1 + dealerC2;
+
+
+                //Player values
+                playerC1 = cardValue(deckOfCards[2]);
+                playerC2 = cardValue(deckOfCards[3]);
+                playerTotal = playerC1 + playerC2;
+
+                //Calls method to determine winner
+                System.out.println(winner(playerTotal, dealerTotal));
+
+
+
+                /*
                 //Option for player to hit/stay
-
+                //
                 //Check over 21
-
+                //
                 //Option to hit stay
-
+                //
                 //Dealer draw
-
+                */
 
             }
         });
@@ -130,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
 
+            //Translates card string value into int value
             int changeValue = Integer.parseInt(splitStr[0]);
             cardVal = changeValue;
 
