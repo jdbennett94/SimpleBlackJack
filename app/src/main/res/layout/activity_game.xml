@@ -34,10 +34,18 @@
     </TextView>
 
     <ImageView
+        android:id="@+id/playercard1"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/player1text"
         android:layout_margin="20dp"
         android:layout_alignRight="@+id/player1text">
+    </ImageView>
+    <ImageView
+        android:id="@+id/playercard2"
+        style="@style/Back_Card"
+        android:layout_alignTop="@+id/player1text"
+        android:layout_margin="20dp"
+        android:layout_alignLeft="@+id/player1text">
     </ImageView>
 
 </RelativeLayout>
