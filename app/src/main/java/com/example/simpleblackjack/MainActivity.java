@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
+
+
+
+
+
+
+
+                /*
                 //Deck initialized and shuffled
                 String[] deckOfCards = deck();
 
@@ -107,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                /*
+
                 //Option for player to hit/stay
                 //
                 //Check over 21
@@ -128,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
      * returns String object deck
      *
      * @return String[] fulldeck;
-     */
+     //
      public static String[] deck() {
 
          //Creates deck of cards String array, end product will be a double matrix array
@@ -183,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param card (String)
      * @return int
-     */
+     //
     public static int cardValue(String card) {
 
         int cardVal;
@@ -223,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
      * @param card1 (String)
      * @param card2 (String)
      * @return boolean
-     */
+     //
     public static boolean blackjackCheck(String card1, String card2){
 
         boolean gameoverBK = false;
@@ -267,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
      * @param player
      * @param dealer
      * @return String;
-     */
+     //
     public static String winner (int player, int dealer) {
 
         String win = "";
@@ -297,5 +305,6 @@ public class MainActivity extends AppCompatActivity {
 
         return bustCheck;
      }
+    */
 
 }
