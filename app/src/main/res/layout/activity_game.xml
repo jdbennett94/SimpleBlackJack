@@ -5,6 +5,7 @@
     android:background="@drawable/pokertable">
 
     <Button
+        android:id="@+id/restartbutton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -50,6 +51,7 @@
     android:outlineAmbientShadowColor="@color/red"
     android:layout_centerVertical="true"
     android:layout_toRightOf="@+id/deck"
+    android:layout_marginLeft="20dp"
     >
 
 </Button>
