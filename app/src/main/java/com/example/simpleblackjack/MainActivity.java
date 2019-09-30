@@ -23,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Deck initialized and shuffled
-
+                String[] deckOfCards = deck();
 
                 //Dealer given two cards
+
 
                 //Player given two cards
 
@@ -47,14 +48,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Important: Creates deck of String type cards, then shuffles the deck,
+     * returns String object deck
      *
-     * @return
+     * @return String[] fulldeck;
      */
      public String[] deck() {
 
-         String[] deck = new String[];
+         //Creates deck of cards String array, end product will be a double matrix array
+         String[] cardClass = {"Hearts", "Clubs", "Diamonds", "Spades"};
 
-         return deck;
+         //Possible cards in a type
+         String[] cardNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+
+         //52 card value, can be increased theoretically for larger collections like a casino
+         int numDeck;
+         numDeck = cardClass.length * cardNumber.length;
+
+         //Sets deck array to max of 52 indexes (for 52 card)
+         String[] fullDeck = new String[numDeck];
+
+
+         //Iterating to create deck
+         for(int c=0; c < cardNumber.length; c++)
+         {
+             for(int q=0; q < cardClass.length; q++)
+             {
+                 fullDeck[cardClass.length*c + q] = cardNumber[c] + " of " + cardClass[q];
+             }
+         }
+
+
+         //We have full deck of cards now, but they need to be shuffled randomly each playthrough
+         for (int s=0; s<numDeck; s++){
+
+             //Randomizing card variable
+             int randomCard;
+             randomCard = s + (int)(Math.random()*(numDeck-s));
+
+             //Place holder String
+             String delta = fullDeck[randomCard];
+
+             //Fills out deck with new order of cards
+             fullDeck[randomCard] = fullDeck[s];
+             fullDeck[s]=delta;
+
+
+         }
+
+         //This returns the randomized deck
+         return fullDeck;
 
      }
 
@@ -62,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Changes the string value of the card to a int value for totalling
      *
-     * @param card
-     * @return
+     * @param card (String)
+     * @return int
      */
     public int cardValue(String card) {
 
@@ -75,9 +118,14 @@ public class MainActivity extends AppCompatActivity {
 
         // splitStr[0] holds first word of each card name (ex. ACE of hearts, TEN of diamonds, etc)
         // We convert that index to int for value
-        if(splitStr[0].equals("Ace") || splitStr[0].equals("King") || splitStr[0].equals("Queen") || splitStr[0].equals("Jack")) {
+        if(splitStr[0].equals("King") || splitStr[0].equals("Queen") || splitStr[0].equals("Jack")) {
 
             cardVal = 10;
+
+        }
+        else if (splitStr[0].equals("Ace")) {
+
+            cardVal = 11;
 
         }
         else {
@@ -93,21 +141,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * Determines if player or dealer hit blackjack (21)
      *
-     * Determines if player or dealer hits blackjack (21)
-     *
-     * @return int
+     * @param card1 (String)
+     * @param card2 (String)
+     * @return boolean
      */
-    public boolean blackjackCheck(int total){
+    public boolean blackjackCheck(String card1, String card2){
 
-        boolean gameover = false;
+        boolean gameoverBK = false;
 
-        if (total == 21)
+        String[] splitStr1 = card1.split("\\s+");
+        String[] splitStr2 = card2.split("\\s+");
+
+
+        // As with the value method, the first index holds the numerical designator (ex.
+        // splitStr1[0] = "Ace" or "Ten" etc.
+        if (splitStr1[0].equals("Ace") || splitStr2[0].equals("Ace"))
         {
-            gameover = true;
+            //If first card is ace, check second card for 10 value
+            if (splitStr1[0].equals("Ace"))
+            {
+                if (splitStr2[0].equals("King") || splitStr2[0].equals("Queen") || splitStr2[0].equals("Jack"))
+                {
+                    gameoverBK = true;
+                }
+            }
+            else
+            {
+                if (splitStr1[0].equals("King") || splitStr1[0].equals("Queen") || splitStr1[0].equals("Jack"))
+                {
+                    gameoverBK = true;
+                }
+            }
+            //The else above is if the second card is an ace, check the first card
+
         }
 
-        return gameover;
+        //If return of true, means blackjack victory
+        return gameoverBK;
 
      }
 
