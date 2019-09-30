@@ -92,6 +92,12 @@ public class Game {
                 //Dealer draw
                 */
 
+
+
+
+
+
+
     }
 
     /**
@@ -258,6 +264,11 @@ public class Game {
 
     }
 
+    /**
+     *
+     * @param total
+     * @return
+     */
     public static boolean bust(int total){
 
         boolean bustCheck = false;
@@ -267,6 +278,23 @@ public class Game {
         }
 
         return bustCheck;
+    }
+
+    /**
+     *
+     * @param dealer
+     * @param player
+     * @return
+     */
+    public static boolean vsPlayer(int dealer, int player) {
+
+        boolean hitagain = false;
+
+        if (dealer<player) {
+            hitagain = true;
+        }
+
+        return hitagain;
     }
 
 }
