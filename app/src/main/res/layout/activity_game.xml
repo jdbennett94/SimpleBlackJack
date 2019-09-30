@@ -45,7 +45,24 @@
         style="@style/Back_Card"
         android:layout_alignTop="@+id/player1text"
         android:layout_margin="20dp"
+        
         android:layout_alignLeft="@+id/player1text">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/dealcard1"
+        style="@style/Back_Card"
+        android:layout_alignTop="@+id/dealertext"
+        android:layout_margin="20dp"
+        android:layout_alignRight="@+id/dealertext">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/dealercard2"
+        style="@style/Back_Card"
+        android:layout_alignTop="@+id/dealertext"
+        android:layout_margin="20dp"
+        android:layout_alignLeft="@+id/dealertext">
     </ImageView>
 
 </RelativeLayout>
