@@ -3,6 +3,7 @@ package com.example.simpleblackjack;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class GameActivity extends Activity {
     public static Game game;
@@ -15,11 +16,23 @@ public class GameActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        /*Button buttonID4 = (Button) findViewById(R.id.stick4);
-        buttonID4.setBackgroundResource(R.drawable.graybutton);
-        buttonID4.setEnabled(false);
+        ImageView playercard1 = (ImageView) findViewById(R.id.playercard1);
+        String card ="ace of clubs";
+        changeCardView(playercard1, card);
 
-         */
+
+
+    }
+
+    protected void changeCardView(ImageView card, String cardName){
+        String[] name = cardName.toLowerCase().split(" ");
+        switch (name[0]){
+            case"ace":
+                switch (name[2]){
+                    case "clubs":
+                        card.setBackgroundResource(R.drawable.ace_of_clubs);
+                }
+        }
     }
 
     public void restart(View v) {
