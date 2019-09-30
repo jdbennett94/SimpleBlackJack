@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return String[] fulldeck;
      */
-     public String[] deck() {
+     public static String[] deck() {
 
          //Creates deck of cards String array, end product will be a double matrix array
          String[] cardClass = {"Hearts", "Clubs", "Diamonds", "Spades"};
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
      * @param card (String)
      * @return int
      */
-    public int cardValue(String card) {
+    public static int cardValue(String card) {
 
         int cardVal;
 
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
      * @param card2 (String)
      * @return boolean
      */
-    public boolean blackjackCheck(String card1, String card2){
+    public static boolean blackjackCheck(String card1, String card2){
 
         boolean gameoverBK = false;
 
@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
      * @param dealer
      * @return String;
      */
-    public String winner (int player, int dealer) {
+    public static String winner (int player, int dealer) {
 
         String win = "";
 
@@ -287,8 +287,15 @@ public class MainActivity extends AppCompatActivity {
 
      }
 
+     public static boolean bust(int total){
 
+        boolean bustCheck = false;
 
+        if (total > 21){
+            bustCheck = true;
+        }
 
+        return bustCheck;
+     }
 
 }
