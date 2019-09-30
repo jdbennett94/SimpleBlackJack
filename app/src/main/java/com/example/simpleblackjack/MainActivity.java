@@ -129,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
                 //Dealer draw
                 */
 
-            }
-        });
+     //       }
+       // });
 
 
     }
@@ -311,4 +311,4 @@ public class MainActivity extends AppCompatActivity {
      }
     */
 
-}
+//}
