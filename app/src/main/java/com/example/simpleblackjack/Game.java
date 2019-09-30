@@ -2,6 +2,7 @@ package com.example.simpleblackjack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
 
@@ -28,18 +29,14 @@ public class Game {
 
         //dealer
         if (blackjackCheck(deckOfCards[0], deckOfCards[1])) {
-
             //Dealer black jack
             dealerWin = true;
-
         }
 
         //player
         if (blackjackCheck(deckOfCards[2], deckOfCards[3])) {
-
             //player black jack
             playerWin = true;
-
         }
 
         //Checks who won blackjack and tie scenario
@@ -48,12 +45,15 @@ public class Game {
             if (dealerWin && playerWin) {
                 //Output tie message and offer to replay game
                 System.out.println("It's A Tie!");
+                return;
             } else if (dealerWin) {
                 //Output dealer wins
                 System.out.println("Dealer Wins");
+                return;
             } else {
                 //Player victory
                 System.out.println("Player Wins!");
+                return;
             }
 
 
@@ -78,20 +78,103 @@ public class Game {
         playerTotal = playerC1 + playerC2;
 
         //Calls method to determine winner
-        System.out.println(winner(playerTotal, dealerTotal));
+        //System.out.println(winner(playerTotal, dealerTotal));
+//*******************************************************************************//
+
+        //Hit Or Stay
+        int topcard = 4; //Keeps track of top card
+        boolean playerbust = false; //Keeps track of user bust
+
+        //Reads usr statement of hit or stay, replace with button press
+        System.out.println("Hit or stay?");
+        Scanner kbd = new Scanner (System.in);
+        String decision = kbd.nextLine();
 
 
 
-                /*
-                //Option for player to hit/stay
-                //
-                //Check over 21
-                //
-                //Option to hit stay
-                //
-                //Dealer draw
-                */
+        //Asks user to hit stay, iterates through hits
+        if(decision.equalsIgnoreCase("Hit")) {
 
+            int hitCount = 1;
+
+            do{
+                //Increases hit, adds card to player hand, adds card value to player total
+                //increases card number so top card is proper
+                player.add(deckOfCards[topcard]);
+                playerTotal += cardValue(deckOfCards[topcard]);
+                topcard++;
+
+                //Outputs to user the value of their cards
+                System.out.println(player);
+                System.out.println("Player total is " + playerTotal);
+                playerbust = bust(playerTotal); //Checks if bust
+
+                //If player hasn't bust out, asks if they'd like to hit again
+                if (playerbust == false) {
+                    System.out.println("Hit or stay?");
+                    decision = kbd.nextLine();
+                    hitCount++;
+                }
+                else
+                    System.out.println("Oh no bust, dealer wins");
+
+            }while(decision.equalsIgnoreCase("Hit") && (hitCount != 4) && (playerbust != true));
+        }
+
+
+
+        //Is game over or dealer turn?
+        if(playerbust == false) {
+            System.out.println("Dealer's turn");
+        }
+        else {
+            System.out.println("Game overrrr");
+            return;
+        }
+
+
+
+        //Checks if dealer is already higher than user
+        if(vsPlayer(dealerTotal, playerTotal)) {
+
+            //Dealer keeps picking up cards till he's above player total
+            do {
+
+                //Adds card to dealer hand arrayList, adds value to dealer total, increases top card
+                dealer.add(deckOfCards[topcard]);
+                dealerTotal += cardValue(deckOfCards[topcard]);
+                topcard++;
+
+                System.out.println(dealer);
+                System.out.println("Dealer is " + dealerTotal);
+                playerbust = bust(dealerTotal); //Checks if bust
+
+            }while((vsPlayer(dealerTotal, playerTotal)) && (playerbust != true));
+        }
+
+
+
+        //Checks if dealer has bust or tied
+        if(bust(dealerTotal)) {
+            System.out.println("Player wins!!");
+        }
+        else if(dealerTotal == playerTotal) {
+            System.out.println("It's a tie!");
+        }
+        else {
+            System.out.println("Dealer wins");
+        }
+
+
+
+
+
+
+
+
+
+
+        //End of the game process
     }
 
     /**
@@ -258,6 +341,14 @@ public class Game {
 
     }
 
+
+
+    /**
+     * Determines if player (dealer or player) has bust (ie gone over 21)
+     *
+     * @param total int
+     * @return boolean
+     */
     public static boolean bust(int total){
 
         boolean bustCheck = false;
@@ -267,6 +358,31 @@ public class Game {
         }
 
         return bustCheck;
+    }
+
+
+
+    /**
+     * Determines if dealer needs to hit or stay based on player total
+     *
+     * @param dealer int
+     * @param player int
+     * @return boolean
+     */
+    public static boolean vsPlayer(int dealer, int player) {
+
+        boolean hitagain = false;
+
+        if (dealer<player) {
+            hitagain = true;
+        }
+
+        if (dealer == 21) {
+            hitagain = false;
+        }
+
+
+        return hitagain;
     }
 
 }
