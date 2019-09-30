@@ -13,6 +13,20 @@
         android:textColor="@color/white"
         android:text="Restart">
     </Button>
+
+    <Button
+        android:id="@+id/deck"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/back_of_card"
+        android:text="H i t"
+        android:textStyle="bold"
+        android:textSize="15dp">
+
+    </Button>
+
     <TextView
         style="@style/Text"
         android:id="@+id/player1text"
@@ -28,8 +42,19 @@
         android:id="@+id/dealertext"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@id/deck"
+        android:layout_below="@id/deck"
         android:text="Dealer"
+        >
+    </TextView>
+    <TextView
+        style="@style/Text"
+        android:id="@+id/Hit"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Hit"
+       
+        android:visibility="visible"
         >
     </TextView>
 
@@ -51,17 +76,31 @@
          ></ImageView>
 
     <ImageView
-        android:id="@+id/deck"
+        android:id="@+id/playercard3"
         style="@style/Back_Card"
-        android:layout_width="71dp"
-        android:layout_height="137dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:scaleX="-1"></ImageView>
+        android:layout_alignBaseline="@id/playercard1"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="95dp"
+        android:visibility="invisible"
+        ></ImageView>
+
+    <ImageView
+        android:id="@+id/playercard4"
+        style="@style/Back_Card"
+        android:layout_alignBaseline="@id/playercard1"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="95dp"
+        android:visibility="invisible"
+        ></ImageView>
+
+    <ImageView
+        android:id="@+id/playercard5"
+        style="@style/Back_Card"
+        android:layout_alignBaseline="@id/playercard1"
+        android:layout_marginLeft="205dp"
+        android:layout_marginTop="95dp"
+        android:visibility="invisible"
+        ></ImageView>
 
 
     <ImageView
