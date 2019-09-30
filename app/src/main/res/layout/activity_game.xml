@@ -28,7 +28,7 @@
         android:id="@+id/dealertext"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@id/deck"
         android:text="Dealer"
         >
     </TextView>
@@ -45,39 +45,38 @@
     <ImageView
         android:id="@+id/playercard2"
         style="@style/Back_Card"
-        android:layout_width="wrap_content"
-        android:layout_height="152dp"
-        android:layout_alignTop="@+id/player1text"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"></ImageView>
+        android:layout_alignBaseline="@id/playercard1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="95dp"
+         ></ImageView>
 
     <ImageView
         android:id="@+id/deck"
         style="@style/Back_Card"
-        android:rotationX="90"
-        android:layout_margin="20dp"
-        android:layout_alignLeft="@+id/player1text">
-    </ImageView>
+        android:layout_width="71dp"
+        android:layout_height="137dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:scaleX="-1"></ImageView>
 
 
     <ImageView
-        android:id="@+id/dealcard1"
+        android:id="@+id/dealercard1"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
-        android:layout_margin="20dp"
-        android:layout_alignRight="@+id/dealertext">
+        android:layout_marginLeft="170dp"
+        >
     </ImageView>
 
     <ImageView
         android:id="@+id/dealercard2"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
-        android:layout_margin="20dp"
-        android:layout_alignLeft="@+id/dealertext">
+        android:layout_marginLeft="120dp">
     </ImageView>
 
 </RelativeLayout>
