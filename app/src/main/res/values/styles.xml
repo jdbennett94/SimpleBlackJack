@@ -16,6 +16,14 @@
 
         <item name="android:textAlignment">center</item>
     </style>
+    <style name="Back_Card">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:scaleX">0.5</item>
+        <item name="android:scaleY">0.5</item>
+        <item name="android:background">@drawable/back_of_card</item>
+
+    </style>
 
 
 </resources>
