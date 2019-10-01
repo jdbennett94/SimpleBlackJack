@@ -8,6 +8,9 @@ import java.util.List;
  * Game class, records player value including cards in hand, and totals
  * methods include deck creation and randomization, win, lose methods, bust
  * methods, hit methods for dealer and player, and more
+ *
+ * By: Joshua Bennett & Chiara Maalouf
+ *
  */
 public class Game {
 
