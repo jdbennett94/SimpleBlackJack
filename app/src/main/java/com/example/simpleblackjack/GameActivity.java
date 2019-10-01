@@ -45,6 +45,10 @@ public class GameActivity extends Activity {
 
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
+
+        if(playerEndGame(blackJack.playerTotal))
+            dealerEndGame(blackJack.dealerTotal);
+
     }
 
 
@@ -119,6 +123,20 @@ public class GameActivity extends Activity {
         }
         else if(blackJack.playerTotal>21) {
             lost();
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public boolean dealerEndGame(int total)
+    {
+        if (total==21) {
+            lost();
+            return false;
+        }
+        else if(total>21) {
+            win();
             return false;
         }
         else
