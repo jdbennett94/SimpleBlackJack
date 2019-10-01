@@ -23,8 +23,8 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/red"
         android:background="@color/white"
-        android:text="Click to Play Again"
-        android:visibility="invisible"
+        android:text="Click Here to \n Play Again"
+        android:visibility="visible"
         android:enabled="false"
         android:onClick="restart">
 
