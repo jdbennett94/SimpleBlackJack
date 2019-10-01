@@ -21,6 +21,8 @@ public class Game {
     public static int dealerTotal;
     public static int playerTotal;
     public static int turn;
+    public static int playerHitCount;
+    public static int dealerHitCount;
 
 
     /**
@@ -35,6 +37,8 @@ public class Game {
         hitCount=0;
         playerbust = false;
         dealerbust = false;
+        playerHitCount = 0;
+        dealerHitCount = 0;
 
 
         //Create ArrayList of both players
@@ -89,8 +93,8 @@ public class Game {
 
         // Prototype two card draw game
         //Check who has higher value cards
-        int dealerC1, dealerC2, dealerTotal;
-        int playerC1, playerC2, playerTotal;
+        int dealerC1, dealerC2;
+        int playerC1, playerC2;
 
 
         //Dealer values
@@ -124,16 +128,17 @@ public class Game {
 
 
         //Is game over or dealer turn?
-        if(playerbust == false) {
+        /*if(playerbust == false) {
             System.out.println("Dealer's turn");
         }
         else {
             System.out.println("Game overrrr");
         }
-
+        */
 
 
         //Checks if dealer is already higher than user
+        /*
         if(vsPlayer(dealerTotal, playerTotal)) {
 
             //Dealer keeps picking up cards till he's above player total
@@ -150,11 +155,13 @@ public class Game {
 
             }while((vsPlayer(dealerTotal, playerTotal)) && (playerbust != true));
         }
+        */
+
 
 
 
         //Checks if dealer has bust or tied
-        if(bust(dealerTotal)) {
+        /*if(bust(dealerTotal)) {
             System.out.println("Player wins!!");
         }
         else if(dealerTotal == playerTotal) {
@@ -163,7 +170,7 @@ public class Game {
         else {
             System.out.println("Dealer wins");
         }
-
+        */
 
 
 
@@ -231,12 +238,45 @@ public class Game {
      * Player hit method to determine based on hit button click
      * @return int
      */
-    public static int hit() {
-    //Asks user to hit stay, iterates through hits
+    public static int hit(Boolean Dealer) {
 
+        //Increases hit, adds card to player hand, adds card value to player total
+
+        //increases card number so top card is proper
+
+        if (!Dealer) {
+            player.add(deckOfCards[topcard]);
+            int cardVal = cardValue(deckOfCards[topcard]);
+            cardVal = ace(cardVal, playerTotal);
+            playerTotal += cardVal;
+            topcard++;
+
+            //playerbust = bust(playerTotal); //Checks if bust -- not sure if this is needed
+
+            playerHitCount++;
+            return playerHitCount;
+        } else {
+            dealer.add(deckOfCards[topcard]);
+            int cardVal = cardValue(deckOfCards[topcard]);
+            cardVal = ace(cardVal, dealerTotal);
+            dealerTotal += cardVal;
+            topcard++;
+
+            //playerbust = bust(dealerTotal); //Checks if bust -- not sure if this is needed
+            dealerHitCount++;
+            return dealerHitCount;
+
+        }
+    }
+
+
+
+
+        //Asks user to hit stay, iterates through hits
             //Increases hit, adds card to player hand, adds card value to player total
             //increases card number so top card is proper
 
+            /*
             player.add(deckOfCards[topcard]);
             int cardVal2 = cardValue(deckOfCards[topcard]);
             if (cardVal2 == 11 && cardVal2+playerTotal > 21) {
@@ -250,7 +290,8 @@ public class Game {
             playerbust = bust(playerTotal); //Checks if bust
             hitCount++;
             return hitCount;
-        }
+            */
+
 
 
 
@@ -426,7 +467,7 @@ public class Game {
      *
      * @param total int
      * @return boolean
-     */
+
     public static boolean bust(int total){
 
         boolean bustCheck = false;
@@ -437,6 +478,7 @@ public class Game {
 
         return bustCheck;
     }
+    */
 
 
 
@@ -461,6 +503,84 @@ public class Game {
 
 
         return hitagain;
+    }
+
+
+    /**
+     *
+     * @param total
+     * @return
+     */
+    public static boolean blackJack(int total)
+    {
+        if(total==21)
+            return true;
+        return false;
+    }
+
+
+    /**
+     *
+     * @param total
+     * @return
+     */
+    public static boolean bust(int total)
+    {
+        if(total>21)
+            return true;
+        return false;
+    }
+
+
+
+    /**
+     *
+     * @return
+     */
+    public  static boolean playerWin() {
+
+        if (playerTotal > dealerTotal)
+            return true;
+        return false;
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    public static  boolean dealerWin() {
+
+            if (dealerTotal > playerTotal)
+                return true;
+            return false;
+    }
+
+
+    /**
+     *
+     * @param cardVal
+     * @param playerTotal
+     * @return
+     */
+    public static int ace(int cardVal, int playerTotal)
+    {
+
+            if(cardVal==11)
+                if(bust(cardVal+playerTotal))
+                    return 1;
+            return cardVal;
+
+    }
+
+
+    public static boolean tie(){
+
+        if(playerTotal == dealerTotal){
+            return true;
+        }
+        return false;
+
     }
 
 }
