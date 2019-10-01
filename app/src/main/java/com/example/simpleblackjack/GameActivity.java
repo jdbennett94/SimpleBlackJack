@@ -98,6 +98,7 @@ public class GameActivity extends Activity {
         dealerNew.add((Button) findViewById(R.id.dealercard4));
         dealerNew.add((Button) findViewById(R.id.dealercard5));
         int cardidx = 0;
+        blackJack.hitCount = 0;
         int hitNum = blackJack.dealerHit();
         while (blackJack.dealerTotal < blackJack.playerTotal && blackJack.dealerTotal != 21) {
             Button dealercard = dealerNew.get(cardidx);
@@ -122,11 +123,11 @@ public class GameActivity extends Activity {
      */
     public boolean playerEndGame(int total)
     {
-        if (blackJack.playerTotal==21) {
+        if (total==21) {
             win();
             return false;
         }
-        else if(blackJack.playerTotal>21) {
+        else if(total>21) {
             lost();
             return false;
         }

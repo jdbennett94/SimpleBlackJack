@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Game class, records player value including cards in hand, and totals
+ * methods include deck creation and randomization, win, lose methods, bust
+ * methods, hit methods for dealer and player, and more
+ */
 public class Game {
 
     public static List<String> dealer;
@@ -18,6 +23,10 @@ public class Game {
     public static int turn;
 
 
+    /**
+     * Game object method, sets initial values for global variables and
+     *
+     */
     public Game() {
 
         //Deck initialized and shuffled
@@ -58,7 +67,7 @@ public class Game {
         }
 
         //Checks who won blackjack and tie scenario
-        if (dealerWin || playerWin) {
+        /*if (dealerWin || playerWin) {
 
             if (dealerWin && playerWin) {
                 //Output tie message and offer to replay game
@@ -74,8 +83,8 @@ public class Game {
                 return;
             }
 
-
-        } //End of blackjack check
+        //End of blackjack check
+        } */
 
 
         // Prototype two card draw game
@@ -120,7 +129,6 @@ public class Game {
         }
         else {
             System.out.println("Game overrrr");
-            return;
         }
 
 
