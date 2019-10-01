@@ -100,13 +100,13 @@ public class Game {
         //Dealer values
         dealerC1 = cardValue(deckOfCards[0]);
         dealerC2 = cardValue(deckOfCards[1]);
-        dealerTotal = dealerC1 + dealerC2;
+        dealerTotal = dealerC1 + ace(dealerC2,dealerC1);
 
 
         //Player values
         playerC1 = cardValue(deckOfCards[2]);
         playerC2 = cardValue(deckOfCards[3]);
-        playerTotal = playerC1 + playerC2;
+        playerTotal = playerC1 + ace(playerC2, playerC1);
 
         //Calls method to determine winner
         //System.out.println(winner(playerTotal, dealerTotal));

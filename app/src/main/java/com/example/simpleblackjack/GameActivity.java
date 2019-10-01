@@ -62,6 +62,11 @@ public class GameActivity extends Activity {
     }
 
 
+    /**
+     * Restart button method, on push/click restarts game at all times
+     * @param v View
+     *          View object, viewwable button at all times
+     */
     public void restart(View v) {
         Button result = (Button) findViewById(R.id.result);
         result.setVisibility(View.INVISIBLE);
@@ -72,6 +77,13 @@ public class GameActivity extends Activity {
         this.finish();
     }
 
+    /**
+     * Hit method, unveils card and call Game methods to add cards to hard
+     * and total valuation, checks bust scenario constantly. Then sets up dealer
+     * turn
+     * @param view View
+     *             View object, accepts card view parameters and visibility set
+     */
     public void hit(View view) {
         //increment player deck
 
@@ -129,34 +141,14 @@ public class GameActivity extends Activity {
 
 
 
-        /*
-        List<String> playerCards = blackJack.player;
-        int hitCount = blackJack.hit();
-        if(hitCount==1)
-        {
-            Button playercard3 = (Button) findViewById(R.id.playercard3);
-            changeCardView(playercard3, playerCards.get(2));
-            playercard3.setVisibility(View.VISIBLE);
-
-        }
-        if(hitCount==2){
-            Button playercard4 = (Button) findViewById(R.id.playercard4);
-            changeCardView(playercard4, playerCards.get(3));
-            playercard4.setVisibility(View.VISIBLE);
-        }
-        if(hitCount==3) {
-            Button playercard5 = (Button) findViewById(R.id.playercard5);
-            changeCardView(playercard5, playerCards.get(4));
-            playercard5.setVisibility(View.VISIBLE);
-            Button hitButton = (Button) findViewById(R.id.deck);
-            hitButton.setEnabled(false);
-        }
-        Boolean contunePlaying =playerEndGame(blackJack.playerTotal);
-        if (contunePlaying && hitCount==3)
-            dealerHit();
-        */
 
 
+    /**
+     * Dealer hit method, similar to hit method above, unveils cards on GUI
+     * of type button while iterating to a higher than player value scenario
+     * via the player total value. Addtionally calls game class blackjack check
+     * methods, bust method, and win/loss/tie scenarios as needed
+     */
     public  void dealerHit() {
 
         List<String> dealerCards = blackJack.dealer;
@@ -201,8 +193,8 @@ public class GameActivity extends Activity {
     }
 
     /*
-    Returns True if we keep playing
-     */
+    * Legacy Code
+    */
     public boolean playerEndGame(int total)
     {
         if (total==21) {
@@ -217,6 +209,9 @@ public class GameActivity extends Activity {
             return true;
     }
 
+    /**
+     * Legacy code
+     */
     public boolean dealerEndGame(int total)
     {
         if (total==21) {
