@@ -45,22 +45,17 @@ public class GameActivity extends Activity {
 
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
+
+        if(playerEndGame(blackJack.playerTotal))
+            dealerEndGame(blackJack.dealerTotal);
+
     }
 
 
-    /**
-     * Restart button method
-     * @param v
-     */
     public void restart(View v) {
         this.finish();
     }
 
-
-    /**
-     * User hitting, activated upon pressing button
-     * @param view
-     */
     public void hit(View view)
     {
         List<String> playerCards = blackJack.player;
@@ -90,10 +85,6 @@ public class GameActivity extends Activity {
         }
 
 
-
-    /**
-     * Dealer hit iteration automatic
-     */
     public void dealerHit() {
 
         List<String> dealerCards = blackJack.dealer;
@@ -102,6 +93,7 @@ public class GameActivity extends Activity {
         dealerNew.add((Button) findViewById(R.id.dealercard4));
         dealerNew.add((Button) findViewById(R.id.dealercard5));
         int cardidx = 0;
+        blackJack.hitCount = 0;
         int hitNum = blackJack.dealerHit();
         while (blackJack.dealerTotal < blackJack.playerTotal && blackJack.dealerTotal != 21) {
             Button dealercard = dealerNew.get(cardidx);
@@ -126,11 +118,11 @@ public class GameActivity extends Activity {
      */
     public boolean playerEndGame(int total)
     {
-        if (blackJack.playerTotal==21) {
+        if (total==21) {
             win();
             return false;
         }
-        else if(blackJack.playerTotal>21) {
+        else if(total>21) {
             lost();
             return false;
         }
@@ -138,13 +130,24 @@ public class GameActivity extends Activity {
             return true;
     }
 
-    /**
-     * Stop method
-     * @param view
-     */
+    public boolean dealerEndGame(int total)
+    {
+        if (total==21) {
+            lost();
+            return false;
+        }
+        else if(total>21) {
+            win();
+            return false;
+        }
+        else
+            return true;
+    }
+
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
+
         dealerHit();
     }
 
@@ -155,6 +158,9 @@ public class GameActivity extends Activity {
         Button restart = (Button) findViewById(R.id.restartbutton);
         restart.setVisibility(View.INVISIBLE);
         restart.setEnabled(false);
+
+        Button stop = (Button) findViewById(R.id.stopbutton);
+        stop.setVisibility(View.INVISIBLE);
 
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.VISIBLE);
@@ -171,6 +177,9 @@ public class GameActivity extends Activity {
         restart.setVisibility(View.INVISIBLE);
         restart.setEnabled(false);
 
+        Button stop = (Button) findViewById(R.id.stopbutton);
+        stop.setVisibility(View.INVISIBLE);
+
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.VISIBLE);
         playAgain.setEnabled(true);
@@ -185,6 +194,9 @@ public class GameActivity extends Activity {
         Button restart = (Button) findViewById(R.id.restartbutton);
         restart.setVisibility(View.INVISIBLE);
         restart.setEnabled(false);
+
+        Button stop = (Button) findViewById(R.id.stopbutton);
+        stop.setVisibility(View.INVISIBLE);
 
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.VISIBLE);
