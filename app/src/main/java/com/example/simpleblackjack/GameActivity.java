@@ -70,6 +70,9 @@ public class GameActivity extends Activity {
             changeCardView(playercard5, playerCards.get(4));
             playercard5.setVisibility(View.VISIBLE);
 
+            Button hitButton = (Button) findViewById(R.id.deck);
+            hitButton.setEnabled(false);
+
         }
     }
 
