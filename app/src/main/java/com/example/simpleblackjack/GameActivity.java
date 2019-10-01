@@ -48,10 +48,19 @@ public class GameActivity extends Activity {
     }
 
 
+    /**
+     * Restart button method
+     * @param v
+     */
     public void restart(View v) {
         this.finish();
     }
 
+
+    /**
+     * User hitting, activated upon pressing button
+     * @param view
+     */
     public void hit(View view)
     {
         List<String> playerCards = blackJack.player;
@@ -78,6 +87,10 @@ public class GameActivity extends Activity {
         }
     }
 
+
+    /**
+     * Dealer hit iteration automatic
+     */
     public void dealerHit() {
 
         List<String> dealerCards = blackJack.dealer;
@@ -103,6 +116,10 @@ public class GameActivity extends Activity {
     }
 
 
+    /**
+     * Stop method
+     * @param view
+     */
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
