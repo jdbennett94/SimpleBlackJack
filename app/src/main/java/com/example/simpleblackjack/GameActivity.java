@@ -16,6 +16,8 @@ import java.util.List;
  * Contains various methods including onCreate & onStart which begins the game by
  * creating initial start view and player/dealer hands
  *
+ * By: Chiara Maalouf & Joshua Bennett
+ *
  */
 public class GameActivity extends Activity {
 
