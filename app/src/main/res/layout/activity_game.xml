@@ -24,7 +24,7 @@
         android:textColor="@color/red"
         android:background="@color/white"
         android:text="Click Here to \n Play Again"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:enabled="false"
         android:onClick="restart">
 
