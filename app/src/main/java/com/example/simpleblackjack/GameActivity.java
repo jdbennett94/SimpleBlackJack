@@ -9,11 +9,12 @@ import android.widget.ImageView;
 import java.util.List;
 
 public class GameActivity extends Activity {
-    public static Game blackJack;
+    public static Game blackJack = new Game();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        //blackJack = new Game();
     }
 
     @Override
@@ -25,15 +26,18 @@ public class GameActivity extends Activity {
        Button playercard1 = (Button) findViewById(R.id.playercard1);
        changeCardView(playercard1, "King of Spades");
 
-        /*List<String> playerCards = blackJack.player;
+        /*
         List<String> dealerCards = blackJack.dealer;
         // change views for players first two cards
         Button playercard1 = (Button) findViewById(R.id.playercard1);
         changeCardView(playercard1, playerCards.get(0));
 
-        Button playercard2 = (Button) findViewById(R.id.playercard2);
-        changeCardView(playercard2, playerCards.get(1));
+        */
+        //List<String> playerCards = blackJack.player;
+        //Button playercard2 = (Button) findViewById(R.id.playercard2);
+        //changeCardView(playercard2, playerCards.get(1));
 
+        /*
         // change views for dealer's first two cards
         Button dealercard1 = (Button) findViewById(R.id.dealercard1);
         changeCardView(playercard1, dealerCards.get(0));

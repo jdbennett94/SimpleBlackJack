@@ -90,8 +90,7 @@
         style="@style/Back_Card"
         android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="95dp"
-         ></Button>
+        android:layout_marginTop="95dp"></Button>
 
     <Button
         android:id="@+id/playercard3"
