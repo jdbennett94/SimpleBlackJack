@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * GameActivity class, initial startup class that organizes the views of the game.
  * Contains various methods including onCreate & onStart which begins the game by
- *
+ * creating initial start view and player/dealer hands
  *
  */
 public class GameActivity extends Activity {
