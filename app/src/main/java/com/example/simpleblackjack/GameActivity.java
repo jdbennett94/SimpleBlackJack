@@ -21,7 +21,8 @@ import java.util.List;
  */
 public class GameActivity extends Activity {
 
-    //Important variable declaration
+    //Important variable declaration, creates Game type object blackJack with all
+    //it's respective possible methods
     public static Game blackJack;
     public boolean DealerTurn= false;
 
@@ -134,9 +135,10 @@ public class GameActivity extends Activity {
                 hitButton.setEnabled(false);
 
 
-                if (blackJack.bust(blackJack.playerTotal))
+                if (blackJack.bust(blackJack.playerTotal)) {
                     lost();
-
+                    win = true;
+                }
             }
 
 
