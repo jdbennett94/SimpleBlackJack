@@ -14,8 +14,10 @@ import java.util.List;
 /**
  * GameActivity class, initial startup class that organizes the views of the game.
  * Contains various methods including onCreate & onStart which begins the game by
+ * calling the respective Objects and setting views on the GUI device and plays
+ * the blackjack game
  *
- *
+ * Extends Activity class
  */
 public class GameActivity extends Activity {
 
@@ -24,6 +26,10 @@ public class GameActivity extends Activity {
     public boolean DealerTurn= false;
 
 
+    /**
+     * onCreate method initializes the blackJack Game object and sets layout
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,12 @@ public class GameActivity extends Activity {
         blackJack = new Game();
     }
 
+    /**
+     * onStart method, sets respective player hands and their respective card
+     * visuals on the GUI. Determines immediate blackjack as well.
+     *
+     * Overrides
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -201,8 +213,8 @@ public class GameActivity extends Activity {
 
     }
 
-    /*
-    * Legacy Code
+    /**
+    * Legacy Code not used
     */
     public boolean playerEndGame(int total)
     {
@@ -219,7 +231,7 @@ public class GameActivity extends Activity {
     }
 
     /**
-     * Legacy code
+     * Legacy code not used
      */
     public boolean dealerEndGame(int total)
     {

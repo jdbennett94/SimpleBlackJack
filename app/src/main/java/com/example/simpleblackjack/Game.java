@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class Game {
 
+    //Global variable declarations for game player aspects
     public static List<String> dealer;
     public static List<String> player;
     public static int hitCount;
