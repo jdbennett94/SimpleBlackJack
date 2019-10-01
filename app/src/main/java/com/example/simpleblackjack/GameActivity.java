@@ -20,7 +20,10 @@ import java.util.List;
 public class GameActivity extends Activity {
 
     //Important variable declaration
+    // Makes a new Black Jack Game using Model View Controller
     public static Game blackJack;
+
+    // Tells if it is the Dealer's Turn
     public boolean DealerTurn= false;
 
 
@@ -36,12 +39,13 @@ public class GameActivity extends Activity {
         super.onStart();
 
 
-        // change views for players first two cards
 
+        // Gets cards of Dealer and Player
         List<String> playerCards = blackJack.player;
 
         List<String> dealerCards = blackJack.dealer;
-        // change views for players first two cards
+
+        // Outputs pictures for players first two cards
         Button playercard1 = (Button) findViewById(R.id.playercard1);
         changeCardView(playercard1, playerCards.get(0));
 
@@ -50,13 +54,14 @@ public class GameActivity extends Activity {
         changeCardView(playercard2, playerCards.get(1));
 
 
-        // change views for dealer's first two cards
+        // Outputs pictures for dealer's first two cards
         Button dealercard1 = (Button) findViewById(R.id.dealercard1);
         changeCardView(dealercard1, dealerCards.get(0));
 
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
 
+        // Checks for Black Jack Scenario
         if(blackJack.blackJack(blackJack.dealerTotal) && blackJack.blackJack(blackJack.playerTotal)){
             tie();
         }
@@ -100,6 +105,8 @@ public class GameActivity extends Activity {
         int hitCount = blackJack.hit(DealerTurn);
         boolean win = false;
         if (!DealerTurn) {
+
+            // Outputs picture of next Card
             if (hitCount == 1) {
 
                 Button playercard3 = (Button) findViewById(R.id.playercard3);
@@ -118,21 +125,23 @@ public class GameActivity extends Activity {
                 Button playercard5 = (Button) findViewById(R.id.playercard5);
                 changeCardView(playercard5, playerCards.get(4));
                 playercard5.setVisibility(View.VISIBLE);
+
+                // disables hit button because Player had Hit 3 times
                 Button hitButton = (Button) findViewById(R.id.deck);
                 hitButton.setEnabled(false);
 
-
+                // Checks for a Bust, if Busted ends Game
                 if (blackJack.bust(blackJack.playerTotal))
                     lost();
 
             }
 
 
-
+            // Checks for Bust any time the player hits
             if (blackJack.bust(blackJack.playerTotal))
                 lost();
-            //else if (blackJack.playerWin())
-              //  win();
+
+            // Goes to Dealer's turn if Player did not Bust and Player has hit 3 cards
             if(!win && hitCount==3){
                 DealerTurn = true;
 
@@ -166,14 +175,12 @@ public class GameActivity extends Activity {
         dealerNew.add((Button) findViewById(R.id.dealercard4));
         dealerNew.add((Button) findViewById(R.id.dealercard5));
         int cardidx = 0;
-        //blackJack.hitCount = 0;
 
         while(cardidx<3) {
             int dealerHit = blackJack.hit(DealerTurn);
-            //SystemClock.sleep(1000);
-            Button dealercard = dealerNew.get(cardidx);
-            changeCardView(dealercard, dealerCards.get(cardidx + 2));
-            dealercard.setVisibility(View.VISIBLE);
+            Button dealerCard = dealerNew.get(cardidx);
+            changeCardView(dealerCard, dealerCards.get(cardidx + 2));
+            dealerCard.setVisibility(View.VISIBLE);
 
             if (blackJack.blackJack(blackJack.dealerTotal)) {
                 if(blackJack.tie()){
@@ -196,44 +203,10 @@ public class GameActivity extends Activity {
 
         if(blackJack.playerWin())
             win();
-        //else if(blackJack.tie())
-          //  tie();
 
     }
 
-    /*
-    * Legacy Code
-    */
-    public boolean playerEndGame(int total)
-    {
-        if (total==21) {
-            win();
-            return false;
-        }
-        else if(total>21) {
-            lost();
-            return false;
-        }
-        else
-            return true;
-    }
 
-    /**
-     * Legacy code
-     */
-    public boolean dealerEndGame(int total)
-    {
-        if (total==21) {
-            lost();
-            return false;
-        }
-        else if(total>21) {
-            win();
-            return false;
-        }
-        else
-            return true;
-    }
 
     /**
      * Stop method, next to hit button, clicking the stop labled button disables
@@ -252,7 +225,7 @@ public class GameActivity extends Activity {
 
     /**
      * End of game method, does not return anything. Hides visibility of buttons
-     * when called
+     * when called and makes results banner with play again button appear.
      */
     public void endOfGame(){
         // Makes Results Banner appear
