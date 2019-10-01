@@ -12,6 +12,9 @@ import java.util.List;
 
 public class GameActivity extends Activity {
     public static Game blackJack;
+    public boolean DealerTurn= false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,6 @@ public class GameActivity extends Activity {
         changeCardView(playercard1, playerCards.get(0));
 
 
-
         Button playercard2 = (Button) findViewById(R.id.playercard2);
         changeCardView(playercard2, playerCards.get(1));
 
@@ -46,6 +48,9 @@ public class GameActivity extends Activity {
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
 
+        if(blackJack.blackJack(blackJack.playerTotal)){
+            win();
+        }
 
 
     }
@@ -61,8 +66,70 @@ public class GameActivity extends Activity {
         this.finish();
     }
 
-    public void hit(View view)
-    {
+    public void hit(View view) {
+        //increment player deck
+
+        List<String> playerCards = blackJack.player;
+        int hitCount = blackJack.hit(DealerTurn);
+        boolean win = false;
+        if (!DealerTurn) {
+            if (hitCount == 1) {
+
+                Button playercard3 = (Button) findViewById(R.id.playercard3);
+                changeCardView(playercard3, playerCards.get(2));
+                playercard3.setVisibility(View.VISIBLE);
+
+            }
+
+            if (hitCount == 2) {
+                Button playercard4 = (Button) findViewById(R.id.playercard4);
+                changeCardView(playercard4, playerCards.get(3));
+                playercard4.setVisibility(View.VISIBLE);
+            }
+
+            if (hitCount == 3) {
+                Button playercard5 = (Button) findViewById(R.id.playercard5);
+                changeCardView(playercard5, playerCards.get(4));
+                playercard5.setVisibility(View.VISIBLE);
+                Button hitButton = (Button) findViewById(R.id.deck);
+                hitButton.setEnabled(false);
+
+                if (blackJack.blackJack(blackJack.playerTotal)){
+                    win();
+                win = true;
+            }
+                else if (blackJack.bust(blackJack.playerTotal))
+                    lost();
+
+            }
+
+
+            if (blackJack.blackJack(blackJack.playerTotal)){
+                win();
+                win = true;
+            }
+            else if (blackJack.bust(blackJack.playerTotal))
+                lost();
+            //else if (blackJack.playerWin())
+              //  win();
+            if(!win && hitCount==3){
+                DealerTurn = true;
+
+            }
+        }
+
+
+        if (DealerTurn)
+            // change to dealerhit code
+            dealerHit();
+    }
+
+
+
+
+
+
+        /*
         List<String> playerCards = blackJack.player;
         int hitCount = blackJack.hit();
         if(hitCount==1)
@@ -87,8 +154,7 @@ public class GameActivity extends Activity {
         Boolean contunePlaying =playerEndGame(blackJack.playerTotal);
         if (contunePlaying && hitCount==3)
             dealerHit();
-
-        }
+        */
 
 
     public void dealerHit() {
@@ -99,23 +165,34 @@ public class GameActivity extends Activity {
         dealerNew.add((Button) findViewById(R.id.dealercard4));
         dealerNew.add((Button) findViewById(R.id.dealercard5));
         int cardidx = 0;
-        blackJack.hitCount = 0;
-        int hitNum = blackJack.dealerHit();
-        while (blackJack.dealerTotal < blackJack.playerTotal && blackJack.dealerTotal != 21) {
+        //blackJack.hitCount = 0;
+
+        while(cardidx<3) {
+            int dealerHit = blackJack.hit(DealerTurn);
+            SystemClock.sleep(1000);
             Button dealercard = dealerNew.get(cardidx);
             changeCardView(dealercard, dealerCards.get(cardidx + 2));
             dealercard.setVisibility(View.VISIBLE);
-            cardidx++;
-            SystemClock.sleep(1000);
 
-            if (hitNum == 3) {
+            if (blackJack.blackJack(blackJack.dealerTotal)) {
+                lost();
                 break;
-            } else {
-                hitNum = blackJack.dealerHit();
             }
+            else if (blackJack.bust(blackJack.dealerTotal)){
+                win();
+                break;
+            }
+            else if (blackJack.dealerWin()){
+                lost();
+                break;
+            }
+            cardidx++;
         }
 
-
+        if(blackJack.playerWin())
+            win();
+        else if(blackJack.tie())
+            tie();
 
     }
 
