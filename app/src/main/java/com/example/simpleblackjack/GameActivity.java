@@ -46,12 +46,18 @@ public class GameActivity extends Activity {
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
 
-        
+
 
     }
 
 
     public void restart(View v) {
+        Button result = (Button) findViewById(R.id.result);
+        result.setVisibility(View.INVISIBLE);
+        Button playAgain = (Button) findViewById(R.id.playAgain);
+        playAgain.setVisibility(View.INVISIBLE);
+        playAgain.setEnabled(false);
+        
         this.finish();
     }
 
