@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        //blackJack = new Game();
+
 
         // change views for players first two cards
 
@@ -74,6 +74,12 @@ public class GameActivity extends Activity {
             hitButton.setEnabled(false);
 
         }
+    }
+
+    public void stop(View view){
+        Button hitButton = (Button) findViewById(R.id.deck);
+        hitButton.setEnabled(false);
+        //dealerHit();
     }
 
 
