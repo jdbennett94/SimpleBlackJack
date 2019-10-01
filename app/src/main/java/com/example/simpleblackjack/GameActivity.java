@@ -59,27 +59,94 @@ public class GameActivity extends Activity {
             Button playercard3 = (Button) findViewById(R.id.playercard3);
             changeCardView(playercard3, playerCards.get(2));
             playercard3.setVisibility(View.VISIBLE);
+
         }
         if(hitCount==2){
             Button playercard4 = (Button) findViewById(R.id.playercard4);
             changeCardView(playercard4, playerCards.get(3));
             playercard4.setVisibility(View.VISIBLE);
+
         }
         if(hitCount==3){
             Button playercard5 = (Button) findViewById(R.id.playercard5);
             changeCardView(playercard5, playerCards.get(4));
             playercard5.setVisibility(View.VISIBLE);
-
             Button hitButton = (Button) findViewById(R.id.deck);
             hitButton.setEnabled(false);
 
+
         }
+        Boolean contunePlaying =playerEndGame(blackJack.playerTotal);
+        if (contunePlaying && hitCount==3)
+            dealerhit();
+
+
+    }
+
+    /*
+    Returns True if we keep playing
+     */
+    public boolean playerEndGame(int total)
+    {
+        if (blackJack.playerTotal==21) {
+            win();
+            return false;
+        }
+        else if(blackJack.playerTotal>21) {
+            lost();
+            return false;
+        }
+        else
+            return true;
     }
 
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
         //dealerHit();
+    }
+
+    public void lost() {
+        Button result = (Button) findViewById(R.id.result);
+        result.setVisibility(View.VISIBLE);
+
+        Button restart = (Button) findViewById(R.id.restartbutton);
+        restart.setVisibility(View.INVISIBLE);
+        restart.setEnabled(false);
+
+        Button playAgain = (Button) findViewById(R.id.playAgain);
+        playAgain.setVisibility(View.VISIBLE);
+        playAgain.setEnabled(true);
+    }
+
+    public void win()
+    {
+        Button result = (Button) findViewById(R.id.result);
+        result.setText(R.string.winner);
+        result.setVisibility(View.VISIBLE);
+
+        Button restart = (Button) findViewById(R.id.restartbutton);
+        restart.setVisibility(View.INVISIBLE);
+        restart.setEnabled(false);
+
+        Button playAgain = (Button) findViewById(R.id.playAgain);
+        playAgain.setVisibility(View.VISIBLE);
+        playAgain.setEnabled(true);
+    }
+
+    public void tie()
+    {
+        Button result = (Button) findViewById(R.id.result);
+        result.setText(R.string.tie);
+        result.setVisibility(View.VISIBLE);
+
+        Button restart = (Button) findViewById(R.id.restartbutton);
+        restart.setVisibility(View.INVISIBLE);
+        restart.setEnabled(false);
+
+        Button playAgain = (Button) findViewById(R.id.playAgain);
+        playAgain.setVisibility(View.VISIBLE);
+        playAgain.setEnabled(true);
     }
 
 
