@@ -57,7 +57,7 @@ public class GameActivity extends Activity {
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.INVISIBLE);
         playAgain.setEnabled(false);
-        
+
         this.finish();
     }
 
@@ -179,7 +179,7 @@ public class GameActivity extends Activity {
     public void win()
     {
         Button result = (Button) findViewById(R.id.result);
-        result.setText(R.string.winner);
+        result.setText("You won!!");
         result.setVisibility(View.VISIBLE);
 
         Button restart = (Button) findViewById(R.id.restartbutton);
