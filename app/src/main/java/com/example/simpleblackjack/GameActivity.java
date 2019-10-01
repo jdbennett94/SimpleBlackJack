@@ -6,6 +6,7 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -234,64 +235,73 @@ public class GameActivity extends Activity {
         dealerHit();
     }
 
-    public void lost() {
+    public void endOfGame(){
+        // Makes Results Banner appear
         Button result = (Button) findViewById(R.id.result);
         result.setVisibility(View.VISIBLE);
 
-        Button restart = (Button) findViewById(R.id.restartbutton);
-        restart.setVisibility(View.INVISIBLE);
-        restart.setEnabled(false);
-
-        Button stop = (Button) findViewById(R.id.stopbutton);
-        stop.setVisibility(View.INVISIBLE);
-
+        // Makes Play Again button appear and activates it
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.VISIBLE);
         playAgain.setEnabled(true);
 
+        // Disables and hides restart button
+        Button restart = (Button) findViewById(R.id.restartbutton);
+        restart.setVisibility(View.INVISIBLE);
+        restart.setEnabled(false);
+
+        // hides stop button
+        Button stop = (Button) findViewById(R.id.stopbutton);
+        stop.setVisibility(View.INVISIBLE);
+
+        // hides hit button and disables it
         Button hit = (Button) findViewById(R.id.deck);
         hit.setVisibility(View.INVISIBLE);
         hit.setEnabled(false);
+
+        // Hides player's cards
+        Button playerCard1 = (Button) findViewById(R.id.playercard1);
+        playerCard1.setVisibility(View.INVISIBLE);
+
+        Button playerCard2 = (Button) findViewById(R.id.playercard2);
+        playerCard2.setVisibility(View.INVISIBLE);
+
+        Button playerCard3 = (Button) findViewById(R.id.playercard3);
+        playerCard3.setVisibility(View.INVISIBLE);
+
+        Button playerCard4 = (Button) findViewById(R.id.playercard4);
+        playerCard4.setVisibility(View.INVISIBLE);
+
+        Button playerCard5 = (Button) findViewById(R.id.playercard5);
+        playerCard5.setVisibility(View.INVISIBLE);
+
+        // Hides Dealer Text
+        TextView dealerText = (TextView) findViewById(R.id.dealertext);
+        dealerText.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void lost() {
+
+        endOfGame();
     }
 
     public void win()
     {
+        endOfGame();
         Button result = (Button) findViewById(R.id.result);
-        result.setText("You won!!");
-        result.setVisibility(View.VISIBLE);
+        result.setText(R.string.winner);
 
-        Button restart = (Button) findViewById(R.id.restartbutton);
-        restart.setVisibility(View.INVISIBLE);
-        restart.setEnabled(false);
-
-        Button deck = (Button) findViewById(R.id.deck);
-        deck.setVisibility(View.INVISIBLE);
-        deck.setEnabled(false);
-
-        Button stop = (Button) findViewById(R.id.stopbutton);
-        stop.setVisibility(View.INVISIBLE);
-
-        Button playAgain = (Button) findViewById(R.id.playAgain);
-        playAgain.setVisibility(View.VISIBLE);
-        playAgain.setEnabled(true);
     }
 
     public void tie()
     {
+        endOfGame();
         Button result = (Button) findViewById(R.id.result);
         result.setText(R.string.tie);
-        result.setVisibility(View.VISIBLE);
 
-        Button restart = (Button) findViewById(R.id.restartbutton);
-        restart.setVisibility(View.INVISIBLE);
-        restart.setEnabled(false);
 
-        Button stop = (Button) findViewById(R.id.stopbutton);
-        stop.setVisibility(View.INVISIBLE);
 
-        Button playAgain = (Button) findViewById(R.id.playAgain);
-        playAgain.setVisibility(View.VISIBLE);
-        playAgain.setEnabled(true);
     }
 
 
