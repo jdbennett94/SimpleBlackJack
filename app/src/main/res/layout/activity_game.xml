@@ -38,6 +38,7 @@
         android:background="@drawable/back_of_card"
         android:text="H i t"
         android:textStyle="bold"
+        android:onClick="hit"
         android:textSize="15dp">
 
     </Button>

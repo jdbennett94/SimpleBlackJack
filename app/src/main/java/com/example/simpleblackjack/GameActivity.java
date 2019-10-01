@@ -14,6 +14,7 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        blackJack = new Game();
     }
 
     @Override
@@ -22,29 +23,57 @@ public class GameActivity extends Activity {
         //blackJack = new Game();
 
         // change views for players first two cards
-       Button playercard1 = (Button) findViewById(R.id.playercard1);
-       changeCardView(playercard1, "King of Spades");
 
-        /*List<String> playerCards = blackJack.player;
+        List<String> playerCards = blackJack.player;
+
         List<String> dealerCards = blackJack.dealer;
         // change views for players first two cards
         Button playercard1 = (Button) findViewById(R.id.playercard1);
         changeCardView(playercard1, playerCards.get(0));
 
+
+
         Button playercard2 = (Button) findViewById(R.id.playercard2);
         changeCardView(playercard2, playerCards.get(1));
 
+
         // change views for dealer's first two cards
         Button dealercard1 = (Button) findViewById(R.id.dealercard1);
-        changeCardView(playercard1, dealerCards.get(0));
+        changeCardView(dealercard1, dealerCards.get(0));
 
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
-        changeCardView(dealercard2, dealerCards.get(1));*/
+        changeCardView(dealercard2, dealerCards.get(1));
     }
 
 
     public void restart(View v) {
         this.finish();
+    }
+
+    public void hit(View view)
+    {
+        List<String> playerCards = blackJack.player;
+        int hitCount = blackJack.hit();
+        if(hitCount==1)
+        {
+            Button playercard3 = (Button) findViewById(R.id.playercard3);
+            changeCardView(playercard3, playerCards.get(2));
+            playercard3.setVisibility(View.VISIBLE);
+        }
+        if(hitCount==2){
+            Button playercard4 = (Button) findViewById(R.id.playercard4);
+            changeCardView(playercard4, playerCards.get(3));
+            playercard4.setVisibility(View.VISIBLE);
+        }
+        if(hitCount==3){
+            Button playercard5 = (Button) findViewById(R.id.playercard5);
+            changeCardView(playercard5, playerCards.get(4));
+            playercard5.setVisibility(View.VISIBLE);
+
+            Button hitButton = (Button) findViewById(R.id.deck);
+            hitButton.setEnabled(false);
+
+        }
     }
 
 
