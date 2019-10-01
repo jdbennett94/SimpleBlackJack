@@ -252,32 +252,12 @@ public class GameActivity extends Activity {
 
         // hides stop button
         Button stop = (Button) findViewById(R.id.stopbutton);
-        stop.setVisibility(View.INVISIBLE);
+        stop.setEnabled(false);
 
         // hides hit button and disables it
         Button hit = (Button) findViewById(R.id.deck);
-        hit.setVisibility(View.INVISIBLE);
         hit.setEnabled(false);
 
-        // Hides player's cards
-        Button playerCard1 = (Button) findViewById(R.id.playercard1);
-        playerCard1.setVisibility(View.INVISIBLE);
-
-        Button playerCard2 = (Button) findViewById(R.id.playercard2);
-        playerCard2.setVisibility(View.INVISIBLE);
-
-        Button playerCard3 = (Button) findViewById(R.id.playercard3);
-        playerCard3.setVisibility(View.INVISIBLE);
-
-        Button playerCard4 = (Button) findViewById(R.id.playercard4);
-        playerCard4.setVisibility(View.INVISIBLE);
-
-        Button playerCard5 = (Button) findViewById(R.id.playercard5);
-        playerCard5.setVisibility(View.INVISIBLE);
-
-        // Hides Dealer Text
-        TextView dealerText = (TextView) findViewById(R.id.dealertext);
-        dealerText.setVisibility(View.INVISIBLE);
 
     }
 
