@@ -2,10 +2,12 @@ package com.example.simpleblackjack;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends Activity {
@@ -59,26 +61,49 @@ public class GameActivity extends Activity {
             Button playercard3 = (Button) findViewById(R.id.playercard3);
             changeCardView(playercard3, playerCards.get(2));
             playercard3.setVisibility(View.VISIBLE);
-
         }
         if(hitCount==2){
             Button playercard4 = (Button) findViewById(R.id.playercard4);
             changeCardView(playercard4, playerCards.get(3));
             playercard4.setVisibility(View.VISIBLE);
-
         }
-        if(hitCount==3){
+        if(hitCount==3) {
             Button playercard5 = (Button) findViewById(R.id.playercard5);
             changeCardView(playercard5, playerCards.get(4));
             playercard5.setVisibility(View.VISIBLE);
             Button hitButton = (Button) findViewById(R.id.deck);
-            hitButton.setEnabled(false);
-
-
+            hitButton.setEnabled(false)
         }
         Boolean contunePlaying =playerEndGame(blackJack.playerTotal);
         if (contunePlaying && hitCount==3)
-            dealerhit();
+            dealerHit();
+
+        }
+
+
+    public void dealerHit() {
+
+        List<String> dealerCards = blackJack.dealer;
+        List<Button> dealerNew = new ArrayList<Button>();
+        dealerNew.add((Button) findViewById(R.id.dealercard3));
+        dealerNew.add((Button) findViewById(R.id.dealercard4));
+        dealerNew.add((Button) findViewById(R.id.dealercard5));
+        int cardidx = 0;
+        int hitNum = blackJack.dealerHit();
+        while (blackJack.dealerTotal < blackJack.playerTotal && blackJack.dealerTotal != 21) {
+            Button dealercard = dealerNew.get(cardidx);
+            changeCardView(dealercard, dealerCards.get(cardidx + 2));
+            dealercard.setVisibility(View.VISIBLE);
+            cardidx++;
+            SystemClock.sleep(1000);
+
+            if (hitNum == 2) {
+                break;
+            } else {
+                hitNum = blackJack.dealerHit();
+            }
+        }
+
 
 
     }

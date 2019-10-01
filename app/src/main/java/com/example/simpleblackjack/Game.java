@@ -180,7 +180,12 @@ public class Game {
 
         //Adds card to dealer hand arrayList, adds value to dealer total, increases top card
         dealer.add(deckOfCards[topcard]);
-        dealerTotal += cardValue(deckOfCards[topcard]);
+        int cardVal = cardValue(deckOfCards[topcard]);
+        if (cardVal == 11 && cardVal+dealerTotal > 21) {
+            cardVal = 1;
+        }
+
+        dealerTotal += cardVal;
         topcard++;
 
         dealerbust = bust(dealerTotal); //Checks if bust
@@ -206,7 +211,12 @@ public class Game {
             //increases card number so top card is proper
 
             player.add(deckOfCards[topcard]);
-            playerTotal += cardValue(deckOfCards[topcard]);
+            int cardVal2 = cardValue(deckOfCards[topcard]);
+            if (cardVal2 == 11 && cardVal2+playerTotal > 21) {
+                cardVal2 = 1;
+            }
+
+            playerTotal += cardVal2;
             topcard++;
 
 
