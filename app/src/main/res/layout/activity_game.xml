@@ -78,86 +78,86 @@
     </TextView>
 
 
-    <ImageView
+    <Button
         android:id="@+id/playercard1"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/player1text"
         android:layout_marginTop="-4dp"
-        android:layout_marginBottom="20dp"></ImageView>
+        android:layout_marginBottom="20dp"></Button>
 
-    <ImageView
+    <Button
         android:id="@+id/playercard2"
         style="@style/Back_Card"
         android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="95dp"
-         ></ImageView>
+         ></Button>
 
-    <ImageView
+    <Button
         android:id="@+id/playercard3"
         style="@style/Back_Card"
         android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="95dp"
         android:visibility="invisible"
-        ></ImageView>
+        ></Button>
 
-    <ImageView
+    <Button
         android:id="@+id/playercard4"
         style="@style/Back_Card"
         android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="95dp"
         android:visibility="invisible"
-        ></ImageView>
+        ></Button>
 
-    <ImageView
+    <Button
         android:id="@+id/playercard5"
         style="@style/Back_Card"
         android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="205dp"
         android:layout_marginTop="95dp"
         android:visibility="invisible"
-        ></ImageView>
+        ></Button>
 
 
-    <ImageView
+    <Button
         android:id="@+id/dealercard1"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
         android:layout_marginLeft="190dp"
         >
-    </ImageView>
+    </Button>
 
-    <ImageView
+    <Button
     android:id="@+id/dealercard2"
     style="@style/Back_Card"
     android:layout_alignTop="@+id/dealertext"
     android:layout_marginLeft="142dp">
-</ImageView>
+</Button>
 
-    <ImageView
+    <Button
         android:id="@+id/dealercard3"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
         android:layout_marginLeft="93dp"
         android:visibility="invisible">
-    </ImageView>
+    </Button>
 
-    <ImageView
+    <Button
         android:id="@+id/dealercard4"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
         android:layout_marginLeft="46dp"
         android:visibility="invisible">
-    </ImageView>
-    <ImageView
+    </Button>
+    <Button
         android:id="@+id/dealercard5"
         style="@style/Back_Card"
         android:layout_alignTop="@+id/dealertext"
         android:layout_marginLeft="0dp"
         android:visibility="invisible">
-    </ImageView>
+    </Button>
 
 </RelativeLayout>
 

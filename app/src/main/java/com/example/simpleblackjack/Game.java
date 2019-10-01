@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-
+    public static List<String> dealer;
+    public static List<String> player;
     public Game() {
         //Deck initialized and shuffled
         String[] deckOfCards = deck();
 
 
         //Dealer given two cards
-        List<String> dealer = new ArrayList<String>();
+        dealer = new ArrayList<String>();
         dealer.add(deckOfCards[0]);
         dealer.add(deckOfCards[1]);
 
 
         //Player given two cards
-        List<String> player = new ArrayList<String>();
+        player = new ArrayList<String>();
         player.add(deckOfCards[2]);
         player.add(deckOfCards[3]);
 
