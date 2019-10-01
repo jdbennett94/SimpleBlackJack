@@ -48,8 +48,14 @@ public class GameActivity extends Activity {
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
 
-        if(blackJack.blackJack(blackJack.playerTotal)){
+        if(blackJack.blackJack(blackJack.dealerTotal) && blackJack.blackJack(blackJack.playerTotal)){
+            tie();
+        }
+        else if(blackJack.blackJack(blackJack.playerTotal)){
             win();
+        }
+        else if(blackJack.blackJack(blackJack.dealerTotal)){
+            lost();
         }
 
 
@@ -94,21 +100,15 @@ public class GameActivity extends Activity {
                 Button hitButton = (Button) findViewById(R.id.deck);
                 hitButton.setEnabled(false);
 
-                if (blackJack.blackJack(blackJack.playerTotal)){
-                    win();
-                win = true;
-            }
-                else if (blackJack.bust(blackJack.playerTotal))
+
+                if (blackJack.bust(blackJack.playerTotal))
                     lost();
 
             }
 
 
-            if (blackJack.blackJack(blackJack.playerTotal)){
-                win();
-                win = true;
-            }
-            else if (blackJack.bust(blackJack.playerTotal))
+
+            if (blackJack.bust(blackJack.playerTotal))
                 lost();
             //else if (blackJack.playerWin())
               //  win();
@@ -157,7 +157,7 @@ public class GameActivity extends Activity {
         */
 
 
-    public void dealerHit() {
+    public  void dealerHit() {
 
         List<String> dealerCards = blackJack.dealer;
         List<Button> dealerNew = new ArrayList<Button>();
@@ -169,13 +169,17 @@ public class GameActivity extends Activity {
 
         while(cardidx<3) {
             int dealerHit = blackJack.hit(DealerTurn);
-            SystemClock.sleep(1000);
+            //SystemClock.sleep(1000);
             Button dealercard = dealerNew.get(cardidx);
             changeCardView(dealercard, dealerCards.get(cardidx + 2));
             dealercard.setVisibility(View.VISIBLE);
 
             if (blackJack.blackJack(blackJack.dealerTotal)) {
-                lost();
+                if(blackJack.tie()){
+                    tie();
+                }
+                else
+                    lost();
                 break;
             }
             else if (blackJack.bust(blackJack.dealerTotal)){
@@ -191,8 +195,8 @@ public class GameActivity extends Activity {
 
         if(blackJack.playerWin())
             win();
-        else if(blackJack.tie())
-            tie();
+        //else if(blackJack.tie())
+          //  tie();
 
     }
 
@@ -230,6 +234,7 @@ public class GameActivity extends Activity {
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
+        DealerTurn = true;
 
         dealerHit();
     }
