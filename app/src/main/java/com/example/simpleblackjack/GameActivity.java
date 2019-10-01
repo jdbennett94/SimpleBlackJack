@@ -46,8 +46,7 @@ public class GameActivity extends Activity {
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
         changeCardView(dealercard2, dealerCards.get(1));
 
-        if(playerEndGame(blackJack.playerTotal))
-            dealerEndGame(blackJack.dealerTotal);
+        
 
     }
 
@@ -164,6 +163,10 @@ public class GameActivity extends Activity {
         Button playAgain = (Button) findViewById(R.id.playAgain);
         playAgain.setVisibility(View.VISIBLE);
         playAgain.setEnabled(true);
+
+        Button hit = (Button) findViewById(R.id.deck);
+        hit.setVisibility(View.INVISIBLE);
+        hit.setEnabled(false);
     }
 
     public void win()
