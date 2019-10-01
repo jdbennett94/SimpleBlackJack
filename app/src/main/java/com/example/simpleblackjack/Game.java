@@ -20,14 +20,15 @@ public class Game {
     public static Boolean dealerbust;
     public static int dealerTotal;
     public static int playerTotal;
-    public static int turn;
     public static int playerHitCount;
     public static int dealerHitCount;
 
 
     /**
-     * Game object method, sets initial values for global variables and
-     *
+     * Game object method, sets initial values for global variables and creates
+     * initial 2 cards for each player's hands and sets their value as well.
+     * Additionally initializes deck with a randomized collection of string repres.
+     * of the cards
      */
     public Game() {
 
@@ -70,29 +71,8 @@ public class Game {
             playerWin = true;
         }
 
-        //Checks who won blackjack and tie scenario
-        /*if (dealerWin || playerWin) {
 
-            if (dealerWin && playerWin) {
-                //Output tie message and offer to replay game
-                System.out.println("It's A Tie!");
-                return;
-            } else if (dealerWin) {
-                //Output dealer wins
-                System.out.println("Dealer Wins");
-                return;
-            } else {
-                //Player victory
-                System.out.println("Player Wins!");
-                return;
-            }
-
-        //End of blackjack check
-        } */
-
-
-        // Prototype two card draw game
-        //Check who has higher value cards
+        //Sets first two card
         int dealerC1, dealerC2;
         int playerC1, playerC2;
 
@@ -108,103 +88,13 @@ public class Game {
         playerC2 = cardValue(deckOfCards[3]);
         playerTotal = playerC1 + ace(playerC2, playerC1);
 
-        //Calls method to determine winner
-        //System.out.println(winner(playerTotal, dealerTotal));
-//*******************************************************************************//
-
-        //Hit Or Stay
-        //int topcard = 4; //Keeps track of top card
-        //boolean playerbust = false; //Keeps track of user bust
-
-        //Reads usr statement of hit or stay, replace with button press
-        //System.out.println("Hit or stay?");
-        //Scanner kbd = new Scanner (System.in);
-        //String decision = kbd.nextLine();
-
         String decision = "Stay";
 
-
-
-
-
-        //Is game over or dealer turn?
-        /*if(playerbust == false) {
-            System.out.println("Dealer's turn");
-        }
-        else {
-            System.out.println("Game overrrr");
-        }
-        */
-
-
-        //Checks if dealer is already higher than user
-        /*
-        if(vsPlayer(dealerTotal, playerTotal)) {
-
-            //Dealer keeps picking up cards till he's above player total
-            do {
-
-                //Adds card to dealer hand arrayList, adds value to dealer total, increases top card
-                dealer.add(deckOfCards[topcard]);
-                dealerTotal += cardValue(deckOfCards[topcard]);
-                topcard++;
-
-                System.out.println(dealer);
-                System.out.println("Dealer is " + dealerTotal);
-                playerbust = bust(dealerTotal); //Checks if bust
-
-            }while((vsPlayer(dealerTotal, playerTotal)) && (playerbust != true));
-        }
-        */
-
-
-
-
-        //Checks if dealer has bust or tied
-        /*if(bust(dealerTotal)) {
-            System.out.println("Player wins!!");
-        }
-        else if(dealerTotal == playerTotal) {
-            System.out.println("It's a tie!");
-        }
-        else {
-            System.out.println("Dealer wins");
-        }
-        */
-
-
-
-
-
-
-
-
-
-        //End of the game process
     }
-
-    /*public int getPlayerTotal(){
-        return playerTotal;
-    }
-
-    public void setPlayerTotal(int total){
-        this.playerTotal = total;
-    }
-
-
-    public int getDealerTotal(){
-        return dealerTotal;
-    }
-
-    public void setDealerTotal(int total){
-        this.dealerTotal = total;
-    }
-    */
 
 
     /**
-     * Dealer hit cycle, increments top card of deck, adds to total dealer value
-     * @return int
+     * Legacy code not used
      */
     public static int dealerHit(){
 
@@ -231,12 +121,17 @@ public class Game {
     }
 
 
-
-
-
     /**
-     * Player hit method to determine based on hit button click
+     * Hit method which determines that if the hit process is not being done by the
+     * dealer, iterates through hit methods up to 3 times and unveiling the card
+     * each time. Ace value conditions are taken into account by having the ace method
+     * called and the top card of the deck is incremented to account for "pulling" a
+     * card from the top of the deck. Additionally, player hand value are increased
+     * accordingly with their selected card
+     * @param Dealer boolean
+     *              boolean object taken in to determine if player or dealer
      * @return int
+     *              int is returned, the number of hits taken
      */
     public static int hit(Boolean Dealer) {
 
@@ -272,43 +167,23 @@ public class Game {
 
 
 
-        //Asks user to hit stay, iterates through hits
-            //Increases hit, adds card to player hand, adds card value to player total
-            //increases card number so top card is proper
-
-            /*
-            player.add(deckOfCards[topcard]);
-            int cardVal2 = cardValue(deckOfCards[topcard]);
-            if (cardVal2 == 11 && cardVal2+playerTotal > 21) {
-                cardVal2 = 1;
-            }
-
-            playerTotal += cardVal2;
-            topcard++;
-
-
-            playerbust = bust(playerTotal); //Checks if bust
-            hitCount++;
-            return hitCount;
-            */
-
-
-
 
 
     /**
-     * Important: Creates deck of String type cards, then shuffles the deck,
-     * returns String object deck
+     * Important: Creates deck of String type cards, then shuffles the deck, Variation
+     * of demo'd deck processes researched, String representation was the most easy to
+     * visualize
      *
      * @return String[] fulldeck;
      */
     public static String[] deck() {
 
+        //Possible cards in a type
+        String[] cardNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+
         //Creates deck of cards String array, end product will be a double matrix array
         String[] cardClass = {"Hearts", "Clubs", "Diamonds", "Spades"};
 
-        //Possible cards in a type
-        String[] cardNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
         //52 card value, can be increased theoretically for larger collections like a casino
         int numDeck;
@@ -435,11 +310,7 @@ public class Game {
 
 
     /**
-     *  Determines if player wins, loses or ties
-     *
-     * @param player
-     * @param dealer
-     * @return String;
+     *  Legacy code not used
      */
     public static String winner (int player, int dealer) {
 
@@ -463,31 +334,7 @@ public class Game {
 
 
     /**
-     * Determines if player (dealer or player) has bust (ie gone over 21)
-     *
-     * @param total int
-     * @return boolean
-
-    public static boolean bust(int total){
-
-        boolean bustCheck = false;
-
-        if (total > 21){
-            bustCheck = true;
-        }
-
-        return bustCheck;
-    }
-    */
-
-
-
-    /**
-     * Determines if dealer needs to hit or stay based on player total
-     *
-     * @param dealer int
-     * @param player int
-     * @return boolean
+     * Legacy code not used
      */
     public static boolean vsPlayer(int dealer, int player) {
 
@@ -507,9 +354,11 @@ public class Game {
 
 
     /**
-     *
-     * @param total
-     * @return
+     * Blackjack determiner method, if player/dealer has 21
+     * @param total int
+     *              playerTotal or dealerTotal value of cards in two card hand
+     * @return boolean
+     *              boolean is returned either confirming (true) 21 or false (!21)
      */
     public static boolean blackJack(int total)
     {
@@ -520,9 +369,12 @@ public class Game {
 
 
     /**
-     *
-     * @param total
-     * @return
+     * Bust method that determines if player/dealer total value has exceeded 21
+     * ie has busted out
+     * @param total int
+     *              Either playerTotal or dealerTotal passed through to determine
+     * @return boolean
+     *              boolean is returned. True means bust , false means in the game
      */
     public static boolean bust(int total)
     {
@@ -534,8 +386,10 @@ public class Game {
 
 
     /**
-     *
-     * @return
+     * Player win method determines if playerTotal (value of cards in hand) exceeds
+     * the dealerTotal (value of cards in dealer's hand)
+     * @return boolean
+     *              boolean is returned. True if player greater than dealer. False not
      */
     public  static boolean playerWin() {
 
@@ -546,8 +400,11 @@ public class Game {
 
 
     /**
-     *
-     * @return
+     * Dealer win method determines if dealerTotal (value of cards in dealer hand)
+     * is greater than player hand value
+     * @return boolean
+     *              boolean is returned. True if dealer is greater than player. False
+     *              not
      */
     public static  boolean dealerWin() {
 
@@ -558,10 +415,15 @@ public class Game {
 
 
     /**
-     *
-     * @param cardVal
-     * @param playerTotal
-     * @return
+     * Ace method is essentially the conditional ace card scenario. The method change
+     * the value of an ace card from 11 to 1 if the greater value would incur a bust
+     * scenario with the cards in hand
+     * @param cardVal int
+     *                Ace card in question
+     * @param playerTotal int
+     *                Total current value of the player's hand
+     * @return int
+     *              int is returned, changing ace value to 1 if bust occurs
      */
     public static int ace(int cardVal, int playerTotal)
     {
@@ -574,6 +436,13 @@ public class Game {
     }
 
 
+    /**
+     * Tie scenario method, determines if the values of player's hand and dealer's
+     * are equal
+     * @return boolean
+     *              boolean is returned. True if equal value hands, false if
+     *              otherwise
+     */
     public static boolean tie(){
 
         if(playerTotal == dealerTotal){
