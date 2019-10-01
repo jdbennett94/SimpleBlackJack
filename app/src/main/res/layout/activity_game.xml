@@ -38,6 +38,7 @@
         android:background="@drawable/back_of_card"
         android:text="H i t"
         android:textStyle="bold"
+        android:onClick="hit"
         android:textSize="15dp">
 
     </Button>
@@ -83,39 +84,42 @@
         style="@style/Back_Card"
         android:layout_alignTop="@+id/player1text"
         android:layout_marginTop="-4dp"
-        android:layout_marginBottom="20dp"></Button>
+        android:layout_marginBottom="20dp">
+
+    </Button>
 
     <Button
         android:id="@+id/playercard2"
         style="@style/Back_Card"
-        android:layout_alignBaseline="@id/playercard1"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="95dp"></Button>
+        android:layout_alignTop="@+id/playercard1"
+
+         ></Button>
 
     <Button
         android:id="@+id/playercard3"
         style="@style/Back_Card"
-        android:layout_alignBaseline="@id/playercard1"
+        android:layout_alignTop="@id/playercard1"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="95dp"
+
         android:visibility="invisible"
         ></Button>
 
     <Button
         android:id="@+id/playercard4"
         style="@style/Back_Card"
-        android:layout_alignBaseline="@id/playercard1"
+        android:layout_alignTop="@id/playercard1"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="95dp"
+
         android:visibility="invisible"
         ></Button>
 
     <Button
         android:id="@+id/playercard5"
         style="@style/Back_Card"
-        android:layout_alignBaseline="@id/playercard1"
+        android:layout_alignTop="@id/playercard1"
         android:layout_marginLeft="205dp"
-        android:layout_marginTop="95dp"
+
         android:visibility="invisible"
         ></Button>
 

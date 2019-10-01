@@ -6,14 +6,25 @@ import java.util.Scanner;
 
 public class Game {
 
+    public static List<String> dealer;
+    public static List<String> player;
+    public static int hitCount;
+    public static int topcard;
+    public static String[] deckOfCards;
+    public static Boolean playerbust;
+    public static int dealerTotal;
+    public static int playerTotal;
+    public static int turn;
+
     public Game() {
 
         //Deck initialized and shuffled
-        String[] deckOfCards = deck();
-
+        deckOfCards = deck();
+        topcard =4;
+        hitCount=0;
         //Create ArrayList of both players
-        List<String> dealer = new ArrayList<String>();
-        List<String> player = new ArrayList<String>();
+        dealer = new ArrayList<String>();
+        player = new ArrayList<String>();
 
         //Dealer given two cards
         dealer.add(deckOfCards[0]);
@@ -87,40 +98,13 @@ public class Game {
         boolean playerbust = false; //Keeps track of user bust
 
         //Reads usr statement of hit or stay, replace with button press
-        System.out.println("Hit or stay?");
-        Scanner kbd = new Scanner (System.in);
-        String decision = kbd.nextLine();
+        //System.out.println("Hit or stay?");
+        //Scanner kbd = new Scanner (System.in);
+        //String decision = kbd.nextLine();
+
+        String decision = "Stay";
 
 
-
-        //Asks user to hit stay, iterates through hits
-        if(decision.equalsIgnoreCase("Hit")) {
-
-            int hitCount = 1;
-
-            do{
-                //Increases hit, adds card to player hand, adds card value to player total
-                //increases card number so top card is proper
-                player.add(deckOfCards[topcard]);
-                playerTotal += cardValue(deckOfCards[topcard]);
-                topcard++;
-
-                //Outputs to user the value of their cards
-                System.out.println(player);
-                System.out.println("Player total is " + playerTotal);
-                playerbust = bust(playerTotal); //Checks if bust
-
-                //If player hasn't bust out, asks if they'd like to hit again
-                if (playerbust == false) {
-                    System.out.println("Hit or stay?");
-                    decision = kbd.nextLine();
-                    hitCount++;
-                }
-                else
-                    System.out.println("Oh no bust, dealer wins");
-
-            }while(decision.equalsIgnoreCase("Hit") && (hitCount != 4) && (playerbust != true));
-        }
 
 
 
@@ -177,6 +161,24 @@ public class Game {
 
         //End of the game process
     }
+public static int hit() {
+    //Asks user to hit stay, iterates through hits
+
+            //Increases hit, adds card to player hand, adds card value to player total
+            //increases card number so top card is proper
+
+            player.add(deckOfCards[topcard]);
+            playerTotal += cardValue(deckOfCards[topcard]);
+            topcard++;
+
+
+            playerbust = bust(playerTotal); //Checks if bust
+            hitCount++;
+            return hitCount;
+        }
+
+
+
 
     /**
      * Important: Creates deck of String type cards, then shuffles the deck,
