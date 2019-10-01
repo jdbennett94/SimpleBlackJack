@@ -23,8 +23,8 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/red"
         android:background="@color/white"
-        android:text="Click to Play Again"
-        android:visibility="invisible"
+        android:text="Click Here to \n Play Again"
+        android:visibility="visible"
         android:enabled="false"
         android:onClick="restart">
 
@@ -38,7 +38,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/red"
         android:textColor="@color/white"
-        android:text="Restart"
+        android:text="New Game"
         android:onClick="restart">
     </Button>
 
