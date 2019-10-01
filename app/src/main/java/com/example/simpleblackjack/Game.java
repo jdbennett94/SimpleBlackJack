@@ -12,9 +12,11 @@ public class Game {
     public static int topcard;
     public static String[] deckOfCards;
     public static Boolean playerbust;
+    public static Boolean dealerbust;
     public static int dealerTotal;
     public static int playerTotal;
     public static int turn;
+
 
     public Game() {
 
@@ -22,6 +24,10 @@ public class Game {
         deckOfCards = deck();
         topcard =4;
         hitCount=0;
+        playerbust = false;
+        dealerbust = false;
+
+
         //Create ArrayList of both players
         dealer = new ArrayList<String>();
         player = new ArrayList<String>();
@@ -94,8 +100,8 @@ public class Game {
 //*******************************************************************************//
 
         //Hit Or Stay
-        int topcard = 4; //Keeps track of top card
-        boolean playerbust = false; //Keeps track of user bust
+        //int topcard = 4; //Keeps track of top card
+        //boolean playerbust = false; //Keeps track of user bust
 
         //Reads usr statement of hit or stay, replace with button press
         //System.out.println("Hit or stay?");
@@ -161,7 +167,39 @@ public class Game {
 
         //End of the game process
     }
-public static int hit() {
+
+    /**
+     * Dealer hit cycle, increments top card of deck, adds to total dealer value
+     * @return int
+     */
+    public static int dealerHit(){
+
+        //if(vsPlayer(dealerTotal, playerTotal)) {
+
+        //Dealer keeps picking up cards till he's above player total
+
+        //Adds card to dealer hand arrayList, adds value to dealer total, increases top card
+        dealer.add(deckOfCards[topcard]);
+        dealerTotal += cardValue(deckOfCards[topcard]);
+        topcard++;
+
+        dealerbust = bust(dealerTotal); //Checks if bust
+        hitCount++;
+        return hitCount;
+
+        //reset hitCount in GameActivity
+        //}while((vsPlayer(dealerTotal, playerTotal)) && (playerbust != true));
+    }
+
+
+
+
+
+    /**
+     * Player hit method to determine based on hit button click
+     * @return int
+     */
+    public static int hit() {
     //Asks user to hit stay, iterates through hits
 
             //Increases hit, adds card to player hand, adds card value to player total
