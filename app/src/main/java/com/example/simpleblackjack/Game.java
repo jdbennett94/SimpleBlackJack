@@ -2,7 +2,7 @@ package com.example.simpleblackjack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 /**
  * Game class, records player value including cards in hand, and totals
@@ -93,32 +93,7 @@ public class Game {
     }
 
 
-    /**
-     * Legacy code not used
-     */
-    public static int dealerHit(){
 
-        //if(vsPlayer(dealerTotal, playerTotal)) {
-
-        //Dealer keeps picking up cards till he's above player total
-
-        //Adds card to dealer hand arrayList, adds value to dealer total, increases top card
-        dealer.add(deckOfCards[topcard]);
-        int cardVal = cardValue(deckOfCards[topcard]);
-        if (cardVal == 11 && cardVal+dealerTotal > 21) {
-            cardVal = 1;
-        }
-
-        dealerTotal += cardVal;
-        topcard++;
-
-        dealerbust = bust(dealerTotal); //Checks if bust
-        hitCount++;
-        return hitCount;
-
-        //reset hitCount in GameActivity
-        //}while((vsPlayer(dealerTotal, playerTotal)) && (playerbust != true));
-    }
 
 
     /**
@@ -309,48 +284,10 @@ public class Game {
     }
 
 
-    /**
-     *  Legacy code not used
-     */
-    public static String winner (int player, int dealer) {
-
-        String win = "";
-
-        if (player > dealer)
-        {
-            win = "Congrats you've won!";
-        }
-        else if(player == dealer)
-        {
-            win = "It's a tie!";
-        }
-        else
-            win = "dealer wins";
-
-        return win;
-
-    }
 
 
 
-    /**
-     * Legacy code not used
-     */
-    public static boolean vsPlayer(int dealer, int player) {
 
-        boolean hitagain = false;
-
-        if (dealer<player) {
-            hitagain = true;
-        }
-
-        if (dealer == 21) {
-            hitagain = false;
-        }
-
-
-        return hitagain;
-    }
 
 
     /**
