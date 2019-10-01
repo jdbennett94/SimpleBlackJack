@@ -5,6 +5,34 @@
     android:background="@drawable/pokertable">
 
     <Button
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="@string/loser"
+        android:visibility="invisible">
+
+    </Button>
+
+    <Button
+        android:id="@+id/playAgain"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/result"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/red"
+        android:background="@color/white"
+        android:text="Click to Play Again"
+        android:visibility="invisible"
+        android:enabled="false"
+        android:onClick="restart">
+
+    </Button>
+
+    <Button
         android:id="@+id/restartbutton"
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -54,6 +82,7 @@
     android:layout_centerVertical="true"
     android:layout_toRightOf="@+id/deck"
     android:layout_marginLeft="20dp"
+    android:onClick="stop"
     >
 
 </Button>

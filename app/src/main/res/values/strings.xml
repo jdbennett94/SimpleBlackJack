@@ -2,4 +2,7 @@
     <string name="app_name">SimpleBlackjack</string>
     <string name="play_game">Play Game!</string>
     <string name="simple_blackjack_1v1">Simple Blackjack</string>
+    <string name="winner">Congrats!!! You Won!!</string>
+    <string name="loser">Sorry you lost :(</string>
+    <string name="tie">Its a Tie!</string>
 </resources>
