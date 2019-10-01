@@ -88,7 +88,7 @@ public class Game {
         playerC2 = cardValue(deckOfCards[3]);
         playerTotal = playerC1 + ace(playerC2, playerC1);
 
-        String decision = "Stay";
+
 
     }
 

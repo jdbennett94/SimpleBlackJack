@@ -11,7 +11,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * GameActivity class, initial startup class that organizes the views of the game.
+ * Contains various methods including onCreate & onStart which begins the game by
+ *
+ *
+ */
 public class GameActivity extends Activity {
+
+    //Important variable declaration
     public static Game blackJack;
     public boolean DealerTurn= false;
 
@@ -227,6 +235,12 @@ public class GameActivity extends Activity {
             return true;
     }
 
+    /**
+     * Stop method, next to hit button, clicking the stop labled button disables
+     * the hit button and its view and calls the dealer's turn in game
+     * @param view
+     *          View object is passed
+     */
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
@@ -235,6 +249,11 @@ public class GameActivity extends Activity {
         dealerHit();
     }
 
+
+    /**
+     * End of game method, does not return anything. Hides visibility of buttons
+     * when called
+     */
     public void endOfGame(){
         // Makes Results Banner appear
         Button result = (Button) findViewById(R.id.result);
@@ -281,11 +300,17 @@ public class GameActivity extends Activity {
 
     }
 
+    /**
+     * Lost method, calls end of game method
+     */
     public void lost() {
 
         endOfGame();
     }
 
+    /**
+     * Win method, calls end of game method and outputs winner text
+     */
     public void win()
     {
         endOfGame();
@@ -294,24 +319,28 @@ public class GameActivity extends Activity {
 
     }
 
+    /**
+     * Tie method, calls end of game process and outputs tie message
+     */
     public void tie()
     {
         endOfGame();
         Button result = (Button) findViewById(R.id.result);
         result.setText(R.string.tie);
 
-
-
     }
 
 
-
-
-
-
-
-
+    /**
+     * Change card view method, collection of if statements to properly translate
+     * backend card representation to visual card representation in GUI
+     * @param card Button
+     *              Button object, card are casted as hidden buttons for ease
+     * @param card_string String
+     *              String variable, the string representation of each card
+     */
     protected void changeCardView(Button card, String card_string){
+
         String cardName = card_string.toLowerCase();
 
         // aces
