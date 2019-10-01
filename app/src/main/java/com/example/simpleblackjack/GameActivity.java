@@ -70,6 +70,7 @@ public class GameActivity extends Activity {
             Button playercard3 = (Button) findViewById(R.id.playercard3);
             changeCardView(playercard3, playerCards.get(2));
             playercard3.setVisibility(View.VISIBLE);
+
         }
         if(hitCount==2){
             Button playercard4 = (Button) findViewById(R.id.playercard4);
@@ -107,7 +108,7 @@ public class GameActivity extends Activity {
             cardidx++;
             SystemClock.sleep(1000);
 
-            if (hitNum == 2) {
+            if (hitNum == 3) {
                 break;
             } else {
                 hitNum = blackJack.dealerHit();
@@ -185,6 +186,10 @@ public class GameActivity extends Activity {
         Button restart = (Button) findViewById(R.id.restartbutton);
         restart.setVisibility(View.INVISIBLE);
         restart.setEnabled(false);
+
+        Button deck = (Button) findViewById(R.id.deck);
+        deck.setVisibility(View.INVISIBLE);
+        deck.setEnabled(false);
 
         Button stop = (Button) findViewById(R.id.stopbutton);
         stop.setVisibility(View.INVISIBLE);

@@ -176,6 +176,25 @@ public class Game {
         //End of the game process
     }
 
+    /*public int getPlayerTotal(){
+        return playerTotal;
+    }
+
+    public void setPlayerTotal(int total){
+        this.playerTotal = total;
+    }
+
+
+    public int getDealerTotal(){
+        return dealerTotal;
+    }
+
+    public void setDealerTotal(int total){
+        this.dealerTotal = total;
+    }
+    */
+
+
     /**
      * Dealer hit cycle, increments top card of deck, adds to total dealer value
      * @return int
