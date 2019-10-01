@@ -81,7 +81,7 @@ public class GameActivity extends Activity {
             changeCardView(playercard5, playerCards.get(4));
             playercard5.setVisibility(View.VISIBLE);
             Button hitButton = (Button) findViewById(R.id.deck);
-            hitButton.setEnabled(false)
+            hitButton.setEnabled(false);
         }
         Boolean contunePlaying =playerEndGame(blackJack.playerTotal);
         if (contunePlaying && hitCount==3)
@@ -145,7 +145,7 @@ public class GameActivity extends Activity {
     public void stop(View view){
         Button hitButton = (Button) findViewById(R.id.deck);
         hitButton.setEnabled(false);
-        //dealerHit();
+        dealerHit();
     }
 
     public void lost() {
