@@ -19,7 +19,13 @@ public class GameActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        List<String> playerCards = blackJack.player;
+        //blackJack = new Game();
+
+        // change views for players first two cards
+       Button playercard1 = (Button) findViewById(R.id.playercard1);
+       changeCardView(playercard1, "King of Spades");
+
+        /*List<String> playerCards = blackJack.player;
         List<String> dealerCards = blackJack.dealer;
         // change views for players first two cards
         Button playercard1 = (Button) findViewById(R.id.playercard1);
@@ -33,7 +39,7 @@ public class GameActivity extends Activity {
         changeCardView(playercard1, dealerCards.get(0));
 
         Button dealercard2 = (Button) findViewById(R.id.dealercard2);
-        changeCardView(dealercard2, dealerCards.get(1));
+        changeCardView(dealercard2, dealerCards.get(1));*/
     }
 
 
@@ -48,8 +54,8 @@ public class GameActivity extends Activity {
 
 
 
-    protected void changeCardView(Button card, String cardName){
-        String[] name = cardName.toLowerCase().split(" ");
+    protected void changeCardView(Button card, String card_string){
+        String cardName = card_string.toLowerCase();
 
         // aces
         if(cardName.contains("ace") && cardName.contains("clubs"))
