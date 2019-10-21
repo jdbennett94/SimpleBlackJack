@@ -9,10 +9,14 @@ import java.util.List;
  * methods include deck creation and randomization, win, lose methods, bust
  * methods, hit methods for dealer and player, and more
  *
- * By: Joshua Bennett & Chiara Maalouf
+ * @author Joshua Bennett
+ * @author Chiara Maalouf
+ * @version 1.0 09/30/2019
  *
  */
 public class Game {
+
+    // Very un-object-oriented. Think about encapsulation. Classes should have its internal variables encapsulated.
 
     //Global variable declarations for game player aspects
     public static List<String> dealer;
